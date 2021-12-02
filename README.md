@@ -1,6 +1,7 @@
-Para iniciar o projeto:
+Para iniciar o projeto pela primeira vez, rodar os seguintes comandos no terminal:
 
-```git clone https://github.com/tuliopxavier/Frontend_TechBook.git
+```git clone https://github.com/tuliopxavier/Frontend_TechBook.git```
 
-```npm init
+```cd Frontedn_techbook```
 
+```npm install```

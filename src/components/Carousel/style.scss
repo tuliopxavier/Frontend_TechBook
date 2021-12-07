@@ -1,0 +1,10 @@
+@import '../../global';
+
+
+#carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    height: calc(100vh - 4rem);
+}

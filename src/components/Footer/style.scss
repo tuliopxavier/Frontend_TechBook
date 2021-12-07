@@ -1,0 +1,11 @@
+@import '../../global';
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: $black;
+    height: 4rem;
+    width: 100%;
+}

@@ -1,0 +1,29 @@
+#logo-icon {
+    display: inline-flex;
+    align-items: center;
+
+    & img{
+        margin: 0 5px;
+        background-clip: content-box;
+        
+        &:hover{
+            
+        }
+    }
+
+    & h3 {
+        color: #ff5500;
+        font-size: 2rem;
+        background: linear-gradient(276deg, rgba(255,85,0,1) 0%, rgba(157, 255, 66) 93%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    & h3:last-child {
+        background: linear-gradient(276deg, rgb(157, 255, 66) 0%, rgba(255,85,0,1) 93%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}

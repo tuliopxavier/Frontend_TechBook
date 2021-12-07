@@ -7,7 +7,15 @@ export const Header = () => {
     return (
         <header>
             <Logo/>
-            <input type="search" />
+
+            <div>
+                <input type="search" />
+                <span id="icon-search">
+                    <img src="./search.png"/>
+                </span>
+            </div>
+
+            
             <nav>
                 <ul>
                     <li><a href="">Home</a></li>

@@ -1,21 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Logo } from '../Logo';
-import { Carrinho } from '../Carrinho';
+import { CarrinhoIcon } from '../CarrinhoIcon';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
-export const Header = () => {
+const Header = () => {
     return (
         <header>
-            <Logo/>
+            <Link to='/'><Logo/></Link>
             <input type="search" />
             <nav>
                 <ul>
                     <li><a href="">Home</a></li>
                     <li><a href="">Produtos</a></li>
                     <li><a href="">Sobre Nós</a></li>
-                    <Carrinho/>     
+                    <Link to='/carrinho'>
+                        <CarrinhoIcon/>
+                    </Link>
                 </ul>
             </nav>
         </header>
     )
 }
+
+export default Header;

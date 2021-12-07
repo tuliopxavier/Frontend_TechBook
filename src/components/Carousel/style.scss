@@ -2,9 +2,13 @@
 
 
 #carousel-container {
+    width: 100%;
+    background-color: #ccc;
+    height: calc(100vh - 8rem);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ccc;
-    height: calc(100vh - 4rem);
+    border: 5px solid #fff;
+    position: absolute;
+    top: 4rem;
 }

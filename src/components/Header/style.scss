@@ -16,6 +16,7 @@ header {
         color: #fff;
         opacity: .6;
         transition: opacity .25s ease;
+        transition: all 0.3s ease-in-out;
         
         &:hover{
             opacity: .75;
@@ -33,6 +34,7 @@ header {
         display: flex;
         gap: 1.5rem;
         text-transform: uppercase;
+        padding: 0;
 
         & li {
             align-items: center;

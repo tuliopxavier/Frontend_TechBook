@@ -10,9 +10,11 @@
     }
 
     & p {
+        color: $black;
         position: absolute;
         bottom: 0;
         right: -0.75rem;
+        margin: 0;
 
         display: flex;
         justify-content: center;align-items: center;

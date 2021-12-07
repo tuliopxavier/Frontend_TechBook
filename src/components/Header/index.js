@@ -7,8 +7,16 @@ import './style.scss';
 const Header = () => {
     return (
         <header>
+
             <Link to='/'><Logo/></Link>
-            <input type="search" />
+            
+            <div>
+                <input type="search" />
+                <span id="icon-search">
+                    <img src="./search.png"/>
+                </span>
+            </div>
+
             <nav>
                 <ul>
                     <li><a href="">Home</a></li>

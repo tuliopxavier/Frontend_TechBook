@@ -15,23 +15,44 @@ header {
     & a{
         color: #fff;
         transition: opacity .25s ease;
+        transition: all 0.3s ease-in-out;
         
         &:hover{
             opacity: .75;
         }
     }
 
-    & input[type="search"] {
-        width: 40%;
-        height: 2rem;
-        border: solid 1px;
-        border-radius: .5rem;
+    & div {
+
+        display: inline-block;
+        position: relative;
+        max-width: 40%;
+
+        & input[type="search"] {
+            width: 100%;
+            height: 2rem;
+            border: solid 1px;
+            border-radius: .5rem;
+            font-family: 'Poppins';
+            padding-left: 10px;
+            outline: none;
+        }
+
+        & span {
+            display: block;
+            position: absolute;
+            right: 5px;
+            top: 3px;
+        }
+
     }
+
 
     & ul {
         display: flex;
         gap: 1.5rem;
         text-transform: uppercase;
+        padding: 0;
 
         & li {
             align-items: center;

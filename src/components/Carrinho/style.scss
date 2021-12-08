@@ -1,10 +1,64 @@
 @import '../../global';
 
-
 #carrinho-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-color: #ccc;
-    height: calc(100vh - 4rem);
+    min-height: calc(100vh - 4rem);
+
+    & section {
+        margin: 7rem 0;
+        background-color: white;
+        width: 90%;
+
+        & article {
+            display: flex;
+            padding: 2rem;
+            border-top: solid 1px #ccc;
+
+            & img {
+                width: 8rem;
+                max-height: 10rem;
+                object-fit: cover;
+
+            }
+
+            & .product-container {
+                margin: 0 1.5rem;
+
+                & h3 {
+                    color: $orange;
+                }
+            }
+
+            & .product-price {
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+
+                & input[type='number'] {
+                    width: 4rem;
+                    height: 2rem;
+                    padding: 0.5rem 0 0.5rem 0.5rem;
+                    font-size: 1.25rem;
+                }
+
+                & h4 {
+                    color: $orange;
+                    margin-top: 1rem;
+                }
+
+                & small {
+                    font-size: 1rem;
+                }
+            }
+
+        }
+
+        & article:first-child {
+            border-top: none;
+        }
+    }
 }

@@ -16,16 +16,12 @@ header {
         color: #fff;
         transition: opacity .25s ease;
         transition: all 0.3s ease-in-out;
-        
-        &:hover{
-            opacity: .75;
-        }
     }
 
     & #search {
         display: inline-block;
         position: relative;
-        width: 60vw;
+        width: 40vw;
         max-width: 40%;
 
         & input[type="search"] {

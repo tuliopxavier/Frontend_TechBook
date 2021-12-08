@@ -5,6 +5,7 @@ import './style.scss';
 
 export const Carrinho = () => {
   const [productsList, setProductList] = useState([]);
+  const [multiplier, setMultiplier] = useState(0);
 
   async function getProducts(quantidade) {
     try {
@@ -16,21 +17,34 @@ export const Carrinho = () => {
   }
 
   useEffect(() => {
-    getProducts(20);
-  }, []);
+    getProducts(5);
+  }, []);  
+
+  const handleClick = () => {
+    console.log('click');
+  };
+
+  const handleQtdChange = (e) => {
+    setMultiplier(e.target.value);
+    console.log(multiplier);
+  }
 
   return (
     <div id='carrinho-container'>
       <section>
         {productsList.length ? (
-          productsList.map(({ id, title, price, description, category, image }) => {
+          productsList.map(({ id, title, price, category, image }) => {
               return (
                 <article key={id}>
-                  <img src={image} alt='imagem do produto' />
                   <div className='product-container'>
-                    <h3>{title}</h3>
-                    <small>{category}</small>
-                    <p>{description}</p>
+                    <img src={image} alt='imagem do produto' />
+                    <div>
+                      <h3>{title}</h3>
+                      <small>Categoria:</small>
+                      <p>{category}</p>
+                      <Link to={`/products/${id}`}>Ver produto</Link>
+                      <p>Excluir do carrinho</p>
+                    </div>
                   </div>
                   <div className='product-price'>
                     <label htmlFor={`qtd-${title}`}>Qtd:</label>
@@ -41,12 +55,11 @@ export const Carrinho = () => {
                       placeholder='1'
                       min='1'
                       max='99'
+                      onChange={handleQtdChange}
                     />
                     <h4>
                       <small>R$</small> {price.toFixed(2)}
                     </h4>
-                    <Link to={`/products/${id}`}>Ver produto</Link>
-                    <p>Excluir produto</p>
                   </div>
                 </article>
               );
@@ -56,7 +69,10 @@ export const Carrinho = () => {
           <p id="loading">Carregando suas compras...</p>
         )}
 
-        <div id='total-cart'></div>
+        <div id='total-cart'>
+          <h1>Total</h1>
+          <button type="button" onClick={handleClick}>Continuar e pagar</button>
+        </div>
       </section>
     </div>
   );

@@ -21,6 +21,7 @@ export const Carrinho = () => {
   return (
     <div id='carrinho-container'>
       <section>
+
         {productsList.map(
           ({ id, title, price, description, category, image }) => {
             return (
@@ -42,6 +43,7 @@ export const Carrinho = () => {
         )}
 
         <div id='total-cart'></div>
+        
       </section>
     </div>
   );

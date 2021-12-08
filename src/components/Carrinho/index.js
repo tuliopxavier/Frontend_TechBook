@@ -35,7 +35,7 @@ export const Carrinho = () => {
         )}
 
         <div id='total-cart'>
-          <h1>{productsList.price.reduce()}</h1>
+          <h1>Total</h1>
           <button type="button" onClick={handleClick}>Continuar e pagar</button>
         </div>
       </section>

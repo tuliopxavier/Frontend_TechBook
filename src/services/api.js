@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://ec2-184-72-122-97.compute-1.amazonaws.com:8080/'
+    baseURL: 'https://techbookdh.herokuapp.com/'
   });
 
 export default api;
 
-
+// https://techbookdh.herokuapp.com/products/
 // http://ec2-184-72-122-97.compute-1.amazonaws.com:8080/products/categories

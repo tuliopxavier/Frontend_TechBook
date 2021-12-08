@@ -1,0 +1,76 @@
+@import '../../global';
+
+#produto-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #ccc;
+    min-height: calc(100vh - 4rem);
+ 
+    & section {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 7rem 0;
+        background-color: white;
+        width: 90%;
+
+        & img {
+            width: 20rem;
+            // max-height: 20rem;
+            object-fit: cover;
+        }
+
+        & #detalhes-produto{
+            padding: 1.5rem;
+
+               
+            & h3 {
+                color: $orange;
+            }
+
+            & h4 {
+                color: $orange;
+                margin-top: 1rem;
+            }
+
+            & small {
+                font-size: 1rem;
+            }
+
+            & .product-price {
+
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                padding: 1rem;
+                align-items: center;
+
+                & input[type='number'] {
+                    width: 4rem;
+                    height: 2rem;
+                    padding: 0.5rem 0 0.5rem 0.5rem;
+                    font-size: 1.25rem;
+                    align-items: center;
+                }
+
+                & h4 {
+                    color: $orange;
+                    margin-top: 1rem;
+                }
+
+                & small {
+                    font-size: 1rem;
+                }
+
+
+            }
+    
+    
+    
+    
+        }
+    
+    }
+
+}

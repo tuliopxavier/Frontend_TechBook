@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import './style.scss';
 
@@ -21,29 +22,40 @@ export const Carrinho = () => {
   return (
     <div id='carrinho-container'>
       <section>
-
-        {productsList.map(
-          ({ id, title, price, description, category, image }) => {
-            return (
-              <article key={id}>
-                <img src={image} alt='imagem do produto' />
-                <div className='product-container'>
-                  <h3>{title}</h3>
-                  <small>{category}</small>
-                  <p>{description}</p>
-                </div>
-                <div className='product-price'>
-                  <label htmlFor={`qtd-${title}`}>Qtd:</label>
-                  <input type='number' id={`qtd-${title}`} name={`qtd-${title}`} placeholder='1' min='1' max='99' />
-                  <h4><small>R$</small> {price.toFixed(2)}</h4>
-                </div>
-              </article>
-            );
-          }
+        {productsList.length ? (
+          productsList.map(({ id, title, price, description, category, image }) => {
+              return (
+                <article key={id}>
+                  <img src={image} alt='imagem do produto' />
+                  <div className='product-container'>
+                    <h3>{title}</h3>
+                    <small>{category}</small>
+                    <p>{description}</p>
+                  </div>
+                  <div className='product-price'>
+                    <label htmlFor={`qtd-${title}`}>Qtd:</label>
+                    <input
+                      type='number'
+                      id={`qtd-${title}`}
+                      name={`qtd-${title}`}
+                      placeholder='1'
+                      min='1'
+                      max='99'
+                    />
+                    <h4>
+                      <small>R$</small> {price.toFixed(2)}
+                    </h4>
+                    <Link to={`/products/${id}`}>Ver produto</Link>
+                    <p>Excluir produto</p>
+                  </div>
+                </article>
+              );
+            }
+          )
+        ) : (
+          <p id="loading">Carregando suas compras...</p>
         )}
-
-        <div id='total-cart'></div>
-        
+        <div id='total-cart'></div>      
       </section>
     </div>
   );

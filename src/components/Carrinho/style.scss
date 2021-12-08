@@ -12,6 +12,12 @@
         background-color: white;
         width: 90%;
 
+        & #loading {
+            display: flex;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
         & article {
             display: flex;
             padding: 2rem;
@@ -25,7 +31,7 @@
             }
 
             & .product-container {
-                margin: 0 1.5rem;
+                margin: 0 2rem;
 
                 & h3 {
                     color: $orange;
@@ -36,7 +42,8 @@
 
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-end;
+                gap: 1rem;
+                line-height: 1rem;
 
                 & input[type='number'] {
                     width: 4rem;
@@ -47,7 +54,6 @@
 
                 & h4 {
                     color: $orange;
-                    margin-top: 1rem;
                 }
 
                 & small {

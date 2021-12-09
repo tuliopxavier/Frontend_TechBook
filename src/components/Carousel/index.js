@@ -26,6 +26,7 @@ export const CarouselCards = () => {
     <section id='carousel-container'>
       <Carousel>
         <Carousel.Item interval={5000}>
+
           {productsList.length
             ? productsList.slice(0, 3).map(({ id, image, category }) => {
                 return (
@@ -38,9 +39,11 @@ export const CarouselCards = () => {
                 );
               })
             : ''}
+            
         </Carousel.Item>
 
         <Carousel.Item interval={5000}>
+
           {productsList.length
             ? productsList.slice(3, 6).map(({ id, image, category }) => {
                 return (
@@ -53,6 +56,7 @@ export const CarouselCards = () => {
                 );
               })
             : ''}
+            
         </Carousel.Item>
       </Carousel>
     </section>

@@ -2,11 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 import './style.scss';
-<<<<<<< HEAD
 import { CartContext } from '../../contexts/cartContext';
-=======
-import { CartContext } from '../../Context/CartContext';
->>>>>>> 9f34f828ec4da7d21a5463623255896eb85d9507
 
 export const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
@@ -26,20 +22,10 @@ export const Detail = () => {
     getProduct();
   }, [id]);
 
-<<<<<<< HEAD
   const handleClick = async () => {
       const response = await api.get(`/products/${id}`);
       setProduct(response.data);
   };
-=======
-  const handleClick = async ({ id }) => {
-    try{
-
-    } catch (error) {
-
-    }
-  }
->>>>>>> 9f34f828ec4da7d21a5463623255896eb85d9507
 
   useEffect(() => {
     console.log(product);

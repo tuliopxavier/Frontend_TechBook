@@ -1,14 +1,14 @@
+@import '../../global';
+
 #logo-icon {
     display: inline-flex;
     align-items: center;
+    transition: transform 0.25s ease;
 
     & img{
         margin: 0 5px;
         background-clip: content-box;
         width: 2rem;
-        &:hover{
-            
-        }
     }
 
     & h3 {
@@ -25,5 +25,10 @@
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
+    }
+
+    &:hover img{
+        box-shadow: 0px 0px 10px 2px $black;
+        transform: scale(1.1);
     }
 }

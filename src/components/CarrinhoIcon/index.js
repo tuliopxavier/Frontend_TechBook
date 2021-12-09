@@ -16,7 +16,7 @@ export const CarrinhoIcon = () => {
     }
 
     useEffect(() => {
-        getProducts(20);
+        getProducts(5);
     },[]);
 
     return (

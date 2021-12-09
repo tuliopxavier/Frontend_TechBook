@@ -21,7 +21,7 @@ const Header = () => {
                 <ul>
                     <li><Link to='/'>Home</Link></li>
                     <li><a href="">Produtos</a></li>
-                    <li><a href="">Sobre Nós</a></li>
+                    <li><Link to='/profiles'>Sobre Nós</Link></li>
                     <Link to='/carrinho'>
                         <CarrinhoIcon/>
                     </Link>

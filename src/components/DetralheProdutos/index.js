@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 import './style.scss';
+import { CartContext } from '';
 
 export const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
-  const [multiplier, setMultiplier] = useState(1)
   const {id} = useParams();
+  const { addProduct } = useContext(CartContext);
 
   useEffect(() => {
   const getProduct = async() => {
@@ -23,10 +24,6 @@ export const Detail = () => {
 
   const handleClick = () => {
     console.log('button')
-  }
-
-  const handleQtdChange = (e) => {
-    setMultiplier(e.target.value)
   }
 
   return (

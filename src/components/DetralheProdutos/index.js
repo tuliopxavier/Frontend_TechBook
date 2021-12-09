@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 import './style.scss';
+import { CartContext } from '../../contexts/cartContext';
 
 
 export const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
   const {id} = useParams();
+  const { addProduct } = useContext (CartContext);
 
 
   useEffect(() => {
@@ -24,9 +26,9 @@ export const Detail = () => {
   const handleClick = async ({ id }) => {
     try{
       console.log('funcionou')
-      // const response = await api.get(`/products/${id}`);
-      // setProductDetail(response.data);
-      // addProduct(response.data[0].Detail);
+      const response = await api.get(`/products/${id}`);
+      setProductDetail(response.data);
+      addProduct(response.data[0].Detail);
     } catch (error) {
       console.log('não foi não!')
     }

@@ -13,12 +13,11 @@ export const Detail = () => {
   const getProduct = async() => {
     try {
       const response = await api.get(`/products/${id}`); 
-    // colocar rota `/products/${id}`
       setProductDetail(response.data);
     } catch (error) {
       console.error(error);
     }
-    }
+  }
     getProduct();
 }, [id]);
 

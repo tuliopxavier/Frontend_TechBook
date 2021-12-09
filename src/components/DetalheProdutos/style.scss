@@ -15,12 +15,18 @@
         background-color: white;
         width: 90%;
 
+        & #foto-produto {
+
+            justify-content: center;
+            align-items: center;
+            width: 20rem;
+
+
         & img {
             width: 20rem;
-            // max-height: 20rem;
             object-fit: cover;
         }
-
+        }
         & #detalhes-produto{
             padding: 1.5rem;
 
@@ -35,7 +41,13 @@
             }
 
             & small {
-                font-size: 1rem;
+                font-size: .8rem;
+                color: $orange;
+            }
+
+            & p {
+                padding: .5rem 0 0 0;
+                font-size: .9rem;
             }
 
             & .product-price {
@@ -43,7 +55,6 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-end;
-                padding: 1rem;
                 align-items: center;
 
                 & input[type='number'] {

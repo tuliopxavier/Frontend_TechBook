@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
 export const CarrinhoItem = ({ id, title, price, category, image }) => {
   const [multiplier, setMultiplier] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleQtdChange = (e) => {
     setMultiplier(e.target.value);
   };
+
+  useEffect(() => {
+    setTotalPrice(price * multiplier);
+  },[multiplier, price]);
 
   return (
     <article key={id}>
@@ -33,7 +38,7 @@ export const CarrinhoItem = ({ id, title, price, category, image }) => {
           onChange={handleQtdChange}
         />
         <h4>
-          <small>R$</small> {(price * multiplier).toFixed(2)}
+          <small>R$</small>{totalPrice.toFixed(2)}
         </h4>
       </div>
     </article>

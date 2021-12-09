@@ -1,13 +1,39 @@
 @import '../../global';
 
 #carousel-container {
+  width: 100vw;
+  min-height: calc(100vh - 4rem);
+  padding: 7rem 0;
+  background-color: #ccc;
+
+  .carousel {
     width: 100%;
-    background-color: #ccc;
-    height: calc(100vh - 8rem);
     display: flex;
-    justify-content: center;
     align-items: center;
-    border: 5px solid #fff;
-    position: relative;
-    top: 4rem;
+
+    .carousel-inner {
+
+      .carousel-item {
+        text-align: center;
+
+        div {
+          display: inline-block;
+          margin: 0 10px;
+        }
+
+        & img {
+          width: 10rem;
+          filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.8));
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            transform: scale(0.9);
+          }
+        }
+      }
+    }
+
+    .carousel-indicators {
+      bottom: -50px;
+    }
+  }
 }

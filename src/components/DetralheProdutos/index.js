@@ -42,7 +42,7 @@ export const Detail = () => {
                         <div className='product-price'>
                             <label htmlFor={`qtd-${productDetail.title}`}>Qtd:</label>
                             <input type='number' id={`qtd-${productDetail.title}`} name={`qtd-${productDetail.title}`} placeholder='1' min='1' max='99' />
-                            <button id='add-carrinho'>Adicionar ao carrinho</button>
+                            <button id='add-carrinho'>Comprar</button>
                         </div>                  
                     
                     </div>

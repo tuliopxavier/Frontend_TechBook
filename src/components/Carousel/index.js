@@ -33,7 +33,7 @@ export const CarouselCards = () => {
                     <Link to={`/products/${id}`}>
                       <img src={image} alt='imagem do livro' />
                     </Link>
-                    <p>{category}</p>
+                    {/* <p>{category}</p> */}
                   </div>
                 );
               })
@@ -48,7 +48,7 @@ export const CarouselCards = () => {
                     <Link to={`/products/${id}`}>
                       <img src={image} alt='imagem do livro' />
                     </Link>
-                    <p>{category}</p>
+                    {/* <p>{category}</p> */}
                   </div>
                 );
               })

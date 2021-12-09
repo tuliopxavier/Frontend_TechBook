@@ -6,5 +6,5 @@ const api = axios.create({
 
 export default api;
 
-// https://techbookdh.herokuapp.com/products/
+// https://techbookdh.herokuapp.com/products/categories
 // http://ec2-184-72-122-97.compute-1.amazonaws.com:8080/products/categories

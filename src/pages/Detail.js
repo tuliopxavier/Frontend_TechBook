@@ -1,10 +1,10 @@
 
-import { Detail } from '../components/DetralheProdutos';
+import { Detail } from '../components/DetalheProdutos';
 
 export default function DetailPage() {
-    return (
-        <>
-            <Detail/>
-        </>
-    )
+  return (
+    <>
+      <Detail />
+    </>
+  );
 }

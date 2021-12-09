@@ -53,7 +53,6 @@ export const Detail = () => {
                             <input type='number' id={`qtd-${productDetail.title}`} name={`qtd-${productDetail.title}`} placeholder='1' min='1' max='99' onChange={handleQtdChange}/>
                             <button id='add-carrinho' onClick={handleClick}>Comprar</button>
                         </div>                  
-                    
                     </div>
             </section>
     </div>

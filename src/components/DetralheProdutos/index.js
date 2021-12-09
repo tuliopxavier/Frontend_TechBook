@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 import './style.scss';
-import { CartContext } from '';
+import { CartContext } from '../../Context/CartContext';
 
 export const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
@@ -22,8 +22,12 @@ export const Detail = () => {
     getProduct();
 }, [id]);
 
-  const handleClick = () => {
-    console.log('button')
+  const handleClick = async ({ id }) => {
+    try{
+
+    } catch (error) {
+
+    }
   }
 
   return (
@@ -47,7 +51,7 @@ export const Detail = () => {
                         
                         <div className='product-price'>
                             <label htmlFor={`qtd-${productDetail.title}`}>Qtd:</label>
-                            <input type='number' id={`qtd-${productDetail.title}`} name={`qtd-${productDetail.title}`} placeholder='1' min='1' max='99' onChange={handleQtdChange}/>
+                            <input type='number' id={`qtd-${productDetail.title}`} name={`qtd-${productDetail.title}`} placeholder='1' min='1' max='99' />
                             <button id='add-carrinho' onClick={handleClick}>Comprar</button>
                         </div>                  
                     </div>

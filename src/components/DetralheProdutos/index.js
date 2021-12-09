@@ -5,6 +5,7 @@ import './style.scss';
 
 export const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
+  const [multiplier, setMultiplier] = useState(1)
   const {id} = useParams();
 
   useEffect(() => {
@@ -19,6 +20,14 @@ export const Detail = () => {
     }
     getProduct();
 }, [id]);
+
+  const handleClick = () => {
+    console.log('button')
+  }
+
+  const handleQtdChange = (e) => {
+    setMultiplier(e.target.value)
+  }
 
   return (
     
@@ -41,8 +50,8 @@ export const Detail = () => {
                         
                         <div className='product-price'>
                             <label htmlFor={`qtd-${productDetail.title}`}>Qtd:</label>
-                            <input type='number' id={`qtd-${productDetail.title}`} name={`qtd-${productDetail.title}`} placeholder='1' min='1' max='99' />
-                            <button id='add-carrinho'>Comprar</button>
+                            <input type='number' id={`qtd-${productDetail.title}`} name={`qtd-${productDetail.title}`} placeholder='1' min='1' max='99' onChange={handleQtdChange}/>
+                            <button id='add-carrinho' onClick={handleClick}>Comprar</button>
                         </div>                  
                     
                     </div>

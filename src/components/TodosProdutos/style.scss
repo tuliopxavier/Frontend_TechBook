@@ -1,14 +1,45 @@
 @import '../../global';
 
 #produtos-container {
+    display: flex;
     margin: 5rem 0 0 0;
+    flex-wrap: wrap;
 
-    & section{
+
+    & #menu-container {
+        width: 14rem;
+        height: calc(82vh - 4rem);
+        border-radius: 1rem;
+        box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+        position: fixed;
+        overflow: auto;
+
+
+        & li {
+            list-style: none;
+            font-size: 1rem;
+        }
+
+        & h3 {
+            font-size: 1rem;
+            color:#ff5500;
+            font-weight: 600;
+            padding: 1rem;
+        }
+
+    }
+
+
+
+    & #list-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
+    width: calc(100% - 14rem);
+    position: absolute;
+    right: 0;
         
     & article {
         display: flex;

@@ -22,16 +22,18 @@ export const Detail = () => {
     getProduct();
   }, [id]);
 
-  const handleClick = async () => {
-      const response = await api.get(`/products/${id}`);
+  const handleClick = async ({ id }) => {
+      try {const response = await api.get(`/products/${id}`);
       setProduct(response.data);
+      addProduct(response.data[0].name);
+    } catch (error) {
+      console.log('erro!');
+    }
   };
 
   useEffect(() => {
     console.log(product);
   },[product])
-  
-  
 
   return (
     <div id='produto-container'>

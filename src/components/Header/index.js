@@ -9,14 +9,6 @@ const Header = () => {
         <header>
 
             <Link to='/'><Logo/></Link>
-            
-            <div id="search">
-                <input type="search" />
-                <span id="icon-search">
-                    <img src="./search.png" alt="campo de busca"/>
-                </span>
-            </div>
-
             <nav>
                 <ul>
                     <li><Link to='/'>Home</Link></li>

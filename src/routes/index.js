@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import CarrinhoPage from '../pages/CarrinhoPage';
 import DetailPage from '../pages/Detail';
 import Todos from '../pages/Todos';
+import PorCategoria from '../pages/PorCategoria'
 import CartContextProvider from '../contexts/cartContext';
 
 const RouteList = () => (
@@ -19,7 +20,7 @@ const RouteList = () => (
           <Route path='/carrinho' element={<CarrinhoPage />} />
           <Route path='/products/:id' element={<DetailPage />} />
           <Route path='/products' element={<Todos />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/products/categories/:category" element={<PorCategoria />} />
         </Routes>
         <Footer />
       </CartContextProvider>

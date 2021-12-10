@@ -42,6 +42,15 @@
                     color: $orange;
                     word-break: break-word;
                 }
+
+                & p{
+                    cursor: pointer;
+                    transition: color 0.25s ease;
+
+                    &:hover {
+                        color: $orange;
+                    }
+                }
             }
 
             & .product-price {

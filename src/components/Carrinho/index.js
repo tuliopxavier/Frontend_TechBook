@@ -1,36 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { CarrinhoItem } from '../CarrinhoItem';
-import api from '../../services/api';
+import { CartContext } from '../../contexts/cartContext'
 import './style.scss';
 
 export const Carrinho = () => {
   const [productsList, setProductList] = useState([]);
-  const [productsTotal, setProductTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+  const { products } = useContext(CartContext);
 
-  async function getProducts(quantidade) {
-    try {
-      const response = await api.get('/products');
-      setProductList(response.data.slice(0, quantidade));
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  function sumProducts() {
-    let acc = 0;
-    productsList.forEach( product => {
-      acc = acc + product.price;
-      setProductTotal(acc);
-    })
-  }
+  async function getProducts(products) {
+    setProductList(products);
+  };
 
   useEffect(() => {
-    getProducts(5);
-  }, []);  
+    getProducts(products);
+  }, [products]);  
+  
+
+  function sumProducts(products) {
+    let subtotal = 0;
+    products.forEach( product => {
+      subtotal = subtotal + product.total;
+    });
+    setTotal(subtotal);
+  };
   
   useEffect(() => {
-    sumProducts();
-  });
+    sumProducts(products);
+  },[products]);
   
   const handleClick = () => {
     console.log('click');
@@ -41,15 +38,15 @@ export const Carrinho = () => {
       <section>
         
         {productsList.length ? (
-          productsList.map(({ id, title, price, category, image }) => {
+          productsList.map((item) => {
               return (
-                <CarrinhoItem key={id} id={id} title={title} price={price} category={category} image={image}/>
+                <CarrinhoItem key={item.id} product={item} />
               );
-            })) : (<p id="loading">Carregando suas compras...</p>
+            })) : (<p id="loading">Carrinho vazio...</p>
         )}
 
         <div id='total-cart'>
-          <h1><small>R$</small>{productsTotal}</h1>
+          <h1><small>R$</small>{total}</h1>
           <button type="button" onClick={handleClick}>Continuar e pagar</button>
         </div>
       </section>

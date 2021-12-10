@@ -5,64 +5,49 @@ import './style.scss';
 import { CartContext } from '../../contexts/cartContext';
 
 export const Detail = () => {
-  const [productDetail, setProductDetail] = useState({});
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const { addProduct } = useContext(CartContext);
 
-  useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const response = await api.get(`/products/${id}`);
-        setProductDetail(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getProduct();
-  }, [id]);
-
-  const handleClick = async () => {
+  const getProduct = async (id) => {
+    try {
       const response = await api.get(`/products/${id}`);
       setProduct(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    console.log(product);
-  },[product])
+    getProduct(id);
+  }, [id]);
   
+  const handleClick = async () => {
+    product.quantidade = 1;
+    product.total = product.price * product.quantidade;
+    addProduct(product);
+  };
   
-
   return (
     <div id='produto-container'>
       <section>
         {/* div imagem do produto */}
         <div id='foto-produto'>
-          <img src={productDetail.image} alt='Imagem do produto' />
+          <img src={product.image} alt='Imagem do produto' />
         </div>
 
         {/* div detalhes do produto */}
         <div id='detalhes-produto'>
-          <h3>{productDetail.title}</h3>
+          <h3>{product.title}</h3>
           <h4>
-            <small>R$</small> {productDetail.price}
+            <small>R$</small> {product.price}
           </h4>
-          <small>{productDetail.category}</small>
-          <p>{productDetail.description}</p>
+          <small>{product.category}</small>
+          <p>{product.description}</p>
 
           <div className='product-price'>
-            <label htmlFor={`qtd-${productDetail.title}`}>Qtd:</label>
-            <input
-              type='number'
-              id={`${productDetail.id}`}
-              name={`qtd-${productDetail.title}`}
-              placeholder='1'
-              min='1'
-              max='99'
-              onChange={(e) => {console.log(e.target.value)}}
-            />
             <button id='add-carrinho' onClick={handleClick}>
-              Comprar
+              Adicionar no carrinho
             </button>
           </div>
         </div>

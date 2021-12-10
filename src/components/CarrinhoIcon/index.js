@@ -1,23 +1,19 @@
-import { useState, useEffect } from 'react';
-import api from '../../services/api';
+import { useState, useEffect, useContext } from 'react';
 import carrinho from './carrinho.svg';
+import { CartContext } from '../../contexts/cartContext'
 import './style.scss';
 
 export const CarrinhoIcon = () => {
     const [productsList, setProductList] = useState([]);
+    const { products } = useContext(CartContext);
 
-    async function getProducts(quantidade) {
-        try {
-          const response = await api.get('/products');
-          setProductList(response.data.slice(0, quantidade));
-        } catch (error) {
-          console.error(error);
-        }
-    }
-
+    async function getProducts(products) {
+        setProductList(products);
+      }
+    
     useEffect(() => {
-        getProducts(5);
-    },[]);
+    getProducts(products);
+    }, [products]); 
 
     return (
         <div id="carrinho-icon">

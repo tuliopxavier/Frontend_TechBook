@@ -1,12 +1,12 @@
 import api from '../../services/api'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+// import { Header } from '../Header/index'
 import './style.scss';
 
 
 export const TodosProdutos = () => {
     const [products, setProducts] = useState([])
-
 
     const getProducts = async (quantidade) => {
           try {
@@ -21,24 +21,14 @@ export const TodosProdutos = () => {
         getProducts()
     }, [])
 
-  
-
     return(
        <> 
         <div id='produtos-container'>
-        <section>
           <div id="menu-container">
             <h3>Categorias: </h3>
-            {category.map(
-              ({id, category}) =>{
-                return(
-                  <h4 key={category}> {category} </h4>
-                )
-              }
-            )}
-            
-     
-          </div>
+            <h4> {} </h4>         
+          </div>  
+        <section>
           {products.map(
               ({ id, title, image }) => {
                   return (
@@ -56,6 +46,5 @@ export const TodosProdutos = () => {
       </section>
     </div>
     </>
-    )
-    
+    )    
 }

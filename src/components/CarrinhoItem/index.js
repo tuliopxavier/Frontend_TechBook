@@ -1,9 +1,9 @@
-import { useState, useEffect,useContext } from 'react';
-import { CartContext } from '../../contexts/cartContext'
+import { useState, useEffect, useContext } from 'react';
+import { CartContext } from '../../contexts/cartContext';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
-export const CarrinhoItem = ({product}) => {
+export const CarrinhoItem = ({ product }) => {
   const [multiplier, setMultiplier] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const { products, reloadProduct, deleteProduct } = useContext(CartContext);
@@ -13,10 +13,10 @@ export const CarrinhoItem = ({product}) => {
     product.quantidade = e.target.value;
 
     let productsLocalStorage = JSON.parse(localStorage.getItem('products'));
-    
-    productsLocalStorage.forEach(element => {
+
+    productsLocalStorage.forEach((element) => {
       // eslint-disable-next-line eqeqeq
-      if (element.id == e.target.id){
+      if (element.id == e.target.id) {
         element.quantidade = e.target.value;
         localStorage.removeItem('products');
         localStorage.setItem('products', JSON.stringify(productsLocalStorage));
@@ -28,8 +28,7 @@ export const CarrinhoItem = ({product}) => {
   useEffect(() => {
     setTotalPrice(product.price * multiplier);
     product.total = product.price * multiplier;
-  },[multiplier, product, products]);
-  
+  }, [multiplier, product, products]);
 
   return (
     <article key={product.id}>
@@ -38,9 +37,13 @@ export const CarrinhoItem = ({product}) => {
         <div>
           <h3>{product.title}</h3>
           <small>Categoria:</small>
-          <p as={Link} to={`/products/categories/${product.category}`}>{product.category}</p>
+          <p as={Link} to={`/products/categories/${product.category}`}>
+            {product.category}
+          </p>
           <Link to={`/products/${product.id}`}>Ver produto</Link>
-          <p as={Link} to={"/carrinho"} onClick={() => deleteProduct(product)}>Excluir do carrinho</p>
+          <p as={Link} to={'/carrinho'} onClick={() => deleteProduct(product)}>
+            Excluir do carrinho
+          </p>
         </div>
       </div>
       <div className='product-price'>
@@ -55,7 +58,8 @@ export const CarrinhoItem = ({product}) => {
           required
         />
         <h4>
-          <small>R$</small>{totalPrice.toFixed(2)}
+          <small>R$</small>
+          {totalPrice.toFixed(2)}
         </h4>
       </div>
     </article>

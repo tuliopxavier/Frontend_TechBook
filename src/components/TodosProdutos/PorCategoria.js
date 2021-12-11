@@ -38,7 +38,7 @@ export const PorCategoria = () => {
     return(
        <> 
         <div id='produtos-container'>
-          <div id="menu-container">
+          <section id="menu-container">
             <h3>Categorias: </h3>
             <ul>
             <Link to={'/products'}><li> Todos </li></Link>
@@ -50,10 +50,10 @@ export const PorCategoria = () => {
                })
              )}          
             </ul>        
-          </div>  
+          </section>  
         
         
-        <section>
+        <section id="list-container">
           {categories.map(
               ({ id, title, image }) => {
                   return (

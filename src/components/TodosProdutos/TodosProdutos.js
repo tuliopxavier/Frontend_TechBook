@@ -20,7 +20,6 @@ export const TodosProdutos = () => {
   };
 
   const getCategoriesNames = async () => {
-    console.log('helooo');
     try {
       const response = await api.get(`/products/categories`);
       setCategoriesNames(response.data);

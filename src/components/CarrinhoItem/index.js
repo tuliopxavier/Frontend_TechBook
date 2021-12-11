@@ -6,18 +6,30 @@ import './style.scss';
 export const CarrinhoItem = ({product}) => {
   const [multiplier, setMultiplier] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
-  const { products, deleteProduct } = useContext(CartContext);
+  const { products, reloadProduct, deleteProduct } = useContext(CartContext);
 
   const handleQtdChange = (e) => {
     setMultiplier(e.target.value);
     product.quantidade = e.target.value;
-    console.log(product);
+
+    let productsLocalStorage = JSON.parse(localStorage.getItem('products'));
+    
+    productsLocalStorage.forEach(element => {
+      // eslint-disable-next-line eqeqeq
+      if (element.id == e.target.id){
+        element.quantidade = e.target.value;
+        localStorage.removeItem('products');
+        localStorage.setItem('products', JSON.stringify(productsLocalStorage));
+        reloadProduct(productsLocalStorage);
+      }
+    });
   };
 
   useEffect(() => {
     setTotalPrice(product.price * multiplier);
     product.total = product.price * multiplier;
   },[multiplier, product, products]);
+  
 
   return (
     <article key={product.id}>
@@ -35,11 +47,10 @@ export const CarrinhoItem = ({product}) => {
         <label htmlFor={`qtd-${product.title}`}>Qtd:</label>
         <input
           type='number'
-          id={`qtd-${product.title}`}
+          id={`${product.id}`}
           name={`qtd-${product.title}`}
           min='1'
           max='99'
-          // value={quantidade}
           onChange={handleQtdChange}
           required
         />

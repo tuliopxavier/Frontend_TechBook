@@ -30,7 +30,8 @@ export const Carrinho = () => {
   },[products]);
   
   const handleClick = () => {
-    console.log('click');
+    localStorage.clear();
+    window.location.href = '/carrinho';
   };
 
   return (
@@ -46,8 +47,8 @@ export const Carrinho = () => {
         )}
 
         <div id='total-cart'>
-          <h1><small>R$</small>{total}</h1>
-          <button type="button" onClick={handleClick}>Continuar e pagar</button>
+          <h1><small>R$</small>{total.toFixed(2)}</h1>
+          <button type="button" onClick={handleClick}>Finalizar</button>
         </div>
       </section>
     </div>

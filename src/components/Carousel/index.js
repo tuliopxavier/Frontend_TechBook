@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import { Helmet } from 'react-helmet';
 import './style.scss';
 
 export const CarouselCards = () => {
@@ -24,43 +25,43 @@ export const CarouselCards = () => {
   },[intProd]);
 
   return (
+    <>
+      <Helmet>
+        <title>Techbook | Home</title>
+      </Helmet>
+      <section id='carousel-container'>
+        <Carousel>
+          <Carousel.Item interval={5000}>
+            {productsList.length
+              ? productsList.slice(0, 3).map(({ id, image, category }) => {
+                  return (
+                    <div key={id}>
+                      <Link to={`/products/${id}`}>
+                        <img src={image} alt='imagem do livro' />
+                      </Link>
+                      {/* <p>{category}</p> */}
+                    </div>
+                  );
+                })
+              : ''}
+          </Carousel.Item>
 
-    <section id='carousel-container'>
-      <Carousel>
-        <Carousel.Item interval={5000}>
-
-          {productsList.length
-            ? productsList.slice(0, 3).map(({ id, image, category }) => {
-                return (
-                  <div key={id}>
-                    <Link to={`/products/${id}`}>
-                      <img src={image} alt='imagem do livro' />
-                    </Link>
-                    {/* <p>{category}</p> */}
-                  </div>
-                );
-              })
-            : ''}
-            
-        </Carousel.Item>
-
-        <Carousel.Item interval={5000}>
-
-          {productsList.length
-            ? productsList.slice(3, 6).map(({ id, image, category }) => {
-                return (
-                  <div key={id}>
-                    <Link to={`/products/${id}`}>
-                      <img src={image} alt='imagem do livro' />
-                    </Link>
-                    {/* <p>{category}</p> */}
-                  </div>
-                );
-              })
-            : ''}
-
-        </Carousel.Item>
-      </Carousel>
-    </section>
+          <Carousel.Item interval={5000}>
+            {productsList.length
+              ? productsList.slice(3, 6).map(({ id, image, category }) => {
+                  return (
+                    <div key={id}>
+                      <Link to={`/products/${id}`}>
+                        <img src={image} alt='imagem do livro' />
+                      </Link>
+                      {/* <p>{category}</p> */}
+                    </div>
+                  );
+                })
+              : ''}
+          </Carousel.Item>
+        </Carousel>
+      </section>
+    </>
   );
 };

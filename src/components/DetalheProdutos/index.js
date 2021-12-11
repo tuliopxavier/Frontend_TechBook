@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
-import './style.scss';
 import { CartContext } from '../../contexts/cartContext';
+import { Helmet } from 'react-helmet';
+import './style.scss';
 
 export const Detail = () => {
   const [product, setProduct] = useState({});
@@ -29,6 +30,10 @@ export const Detail = () => {
   };
   
   return (
+    <>
+    <Helmet>
+        <title>Techbook | {`${product.title}`} </title>
+      </Helmet>
     <div id='produto-container'>
       <section>
         {/* div imagem do produto */}
@@ -53,5 +58,6 @@ export const Detail = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };

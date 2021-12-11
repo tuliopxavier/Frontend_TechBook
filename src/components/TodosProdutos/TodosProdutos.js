@@ -2,6 +2,7 @@ import api from '../../services/api';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import './style.scss';
 
 export const TodosProdutos = () => {
@@ -23,7 +24,6 @@ export const TodosProdutos = () => {
     try {
       const response = await api.get(`/products/categories`);
       setCategoriesNames(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log('Erro Categoria');
     }
@@ -36,6 +36,9 @@ export const TodosProdutos = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Techbook | Produtos</title>
+    </Helmet>
       <div id='produtos-container'>
         <section id='menu-container'>
           <h3>Categorias: </h3>
@@ -47,8 +50,8 @@ export const TodosProdutos = () => {
             {categoriesNames.length !== 0 &&
               categoriesNames.map(({ id, name, longName }) => {
                 return (
-                  <Link to={`/products/categories/${name}`}>
-                    <li key={id}> {longName} </li>
+                  <Link key={id} to={`/products/categories/${name}`}>
+                    <li> {longName} </li>
                   </Link>
                 );
               })}

@@ -3,7 +3,7 @@ import github from './icones/github.png';
 import email from './icones/email.png';
 import api from '../../services/api';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import './style.scss';
 
 export const Perfil = () => {
@@ -17,37 +17,39 @@ export const Perfil = () => {
     getProfiles();
   }, []);
 
-  console.log(profiles);
-
   return (
-    <section id='section-profile'>
-      {profiles?.map(
-        ({ id, fullName, urlGit, urlLinkedin, urlPhoto, mail }) => {
-          return (
-            <article key={id}>
-              <div className='perfil-container'>
-                <img id='img-photo' src={urlPhoto} alt='avatar' />
+    <>
+      <Helmet>
+        <title>Techbook | Equipe</title>
+      </Helmet>
+      <section id='section-profile'>
+        {profiles?.map(
+          ({ id, fullName, urlGit, urlLinkedin, urlPhoto, mail }) => {
+            return (
+              <article key={id}>
+                <div className='perfil-container'>
+                  <img id='img-photo' src={urlPhoto} alt='avatar' />
 
-                <h3>{fullName}</h3>
+                  <h3>{fullName}</h3>
 
-                <div className='icones'>
-                  <a href={urlGit} target='_blank' rel='noreferrer'>
-                    <img src={github} alt='github' />
-                  </a>
-                  <a href={urlLinkedin} target='_blank' rel='noreferrer'>
-                    <img src={linkedin} alt='linkedin' />
-                  </a>
-                  <a href={mail} target='_blank' rel='noreferrer'>
-                    <img src={email} alt='email' />
-                  </a>
-                  <Link to={`/profiles`}></Link>
+                  <div className='icones'>
+                    <a href={urlGit} target='_blank' rel='noreferrer'>
+                      <img src={github} alt='github' />
+                    </a>
+                    <a href={urlLinkedin} target='_blank' rel='noreferrer'>
+                      <img src={linkedin} alt='linkedin' />
+                    </a>
+                    <a href={`mailto:${mail}`} target='_blank' rel='noreferrer'>
+                      <img src={email} alt='email' />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </article>
-          );
-        }
-      )}
-    </section>
+              </article>
+            );
+          }
+        )}
+      </section>
+    </>
   );
 };
 

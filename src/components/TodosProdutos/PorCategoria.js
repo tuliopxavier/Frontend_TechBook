@@ -2,6 +2,7 @@ import api from '../../services/api'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import './style.scss';
 
 
@@ -35,41 +36,44 @@ export const PorCategoria = () => {
       getCategory(category)
     }, [category])
 
-    return(
-       <> 
+    return (
+      <>
+        <Helmet>
+          <title>Techbook | {category}</title>
+        </Helmet>
         <div id='produtos-container'>
-          <div id="menu-container">
+          <div id='menu-container'>
             <h3>Categorias: </h3>
             <ul>
-            <Link to={'/products'}><li> Todos </li></Link>
-             {categoriesNames.length !== 0 && (
-               categoriesNames.map( ({id, name,longName}) => {
-                  return(
-                    <Link to={`/products/categories/${name}`}><li key={id}> {longName} </li></Link>
-                  )
-               })
-             )}          
-            </ul>        
-          </div>  
-        
-        
-        <section>
-          {categories.map(
-              ({ id, title, image }) => {
+              <Link to={'/products'}>
+                <li> Todos </li>
+              </Link>
+              {categoriesNames.length !== 0 &&
+                categoriesNames.map(({ id, name, longName }) => {
                   return (
-                    <article key={id}>
-                      <Link to={`/products/${id}`}>
-                        <img src={image} alt='imagem do produto' />
-                        <div className='product-container'>
-                          <h3>{title}</h3>
-                        </div>
-                      </Link>
-                    </article>
+                    <Link to={`/products/categories/${name}`}>
+                      <li key={id}> {longName} </li>
+                    </Link>
+                  );
+                })}
+            </ul>
+          </div>
+
+          <section>
+            {categories.map(({ id, title, image }) => {
+              return (
+                <article key={id}>
+                  <Link to={`/products/${id}`}>
+                    <img src={image} alt='imagem do produto' />
+                    <div className='product-container'>
+                      <h3>{title}</h3>
+                    </div>
+                  </Link>
+                </article>
               );
-            }
-          )}
-      </section>
-    </div>
-    </>
-    )    
+            })}
+          </section>
+        </div>
+      </>
+    );    
 }

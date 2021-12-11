@@ -23,13 +23,15 @@ export const Perfil = () => {
     console.log(profiles)
 
     return (
-        <section>    
+        <section id="section-profile">    
         {
             profiles?.map(
-                ({ id, fullName, urlGit, urlLinkedin, mail }) => {
+                ({ id, fullName, urlGit, urlLinkedin, urlPhoto, mail }) => {
                     return(
                         <article key={id}>
                             <div className='perfil-container'>
+
+                                <img id="img-photo" src={urlPhoto} />
 
                                 <h3>{fullName}</h3>
 

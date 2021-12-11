@@ -23,7 +23,6 @@ export const PorCategoria = () => {
     try {
       const response = await api.get(`/products/categories`);
       setCategoriesNames(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log('Erro Categoria');
     }

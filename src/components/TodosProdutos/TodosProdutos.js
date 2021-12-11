@@ -7,22 +7,22 @@ import './style.scss';
 
 export const TodosProdutos = () => {
   const [products, setProducts] = useState([]);
-  const [categoriesNames, setCategoriesNames] = useState([]);
+  const [categoryNames, setCategoryNames] = useState([]);
   const { category } = useParams();
 
-  const getProducts = async (quantidade) => {
+  const getProducts = async () => {
     try {
       const response = await api.get('/products');
-      setProducts(response.data.slice(0, quantidade));
+      setProducts(response.data);
     } catch (error) {
       console.log('Erro produtos');
     }
   };
 
-  const getCategoriesNames = async () => {
+  const getCategoryNames = async () => {
     try {
       const response = await api.get(`/products/categories`);
-      setCategoriesNames(response.data);
+      setCategoryNames(response.data);
     } catch (error) {
       console.log('Erro Categoria');
     }
@@ -30,7 +30,7 @@ export const TodosProdutos = () => {
 
   useEffect(() => {
     getProducts();
-    getCategoriesNames();
+    getCategoryNames();
   }, [category]);
 
   return (
@@ -46,8 +46,8 @@ export const TodosProdutos = () => {
               <li> Todos </li>
             </Link>
 
-            {categoriesNames.length !== 0 &&
-              categoriesNames.map(({ id, name, longName }) => {
+            {categoryNames.length !== 0 &&
+              categoryNames.map(({ id, name, longName }) => {
                 return (
                   <Link key={id} to={`/products/categories/${name}`}>
                     <li> {longName} </li>

@@ -20,9 +20,11 @@ export const CarouselCards = () => {
 
   useEffect(() => {
     getProducts(intProd);
+
   },[intProd]);
 
   return (
+
     <section id='carousel-container'>
       <Carousel>
         <Carousel.Item interval={5000}>
@@ -56,7 +58,7 @@ export const CarouselCards = () => {
                 );
               })
             : ''}
-            
+
         </Carousel.Item>
       </Carousel>
     </section>

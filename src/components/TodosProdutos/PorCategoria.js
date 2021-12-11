@@ -1,25 +1,15 @@
 import api from '../../services/api'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { Field } from 'formik';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 
-export const TodosProdutos = () => {
-    const [products, setProducts] = useState([])
+export const PorCategoria = () => {
     const [categories, setCategories] = useState([]);
     const [categoriesNames, setCategoriesNames] = useState([]);
     const {category} = useParams();
 
-    const getProducts = async (quantidade) => {
-          try {
-              const response = await api.get('/products');
-              setProducts(response.data.slice(0, quantidade))
-          } catch (error) {
-              console.log("Erro produtos")
-          }
-    }
     const getCategory = async (category) => {      
       try {
               const response = await api.get(`/products/categories/${category}`);
@@ -41,34 +31,30 @@ export const TodosProdutos = () => {
       }
     
     useEffect(() => {
-        getProducts()
-        getCategoriesNames()
-        getCategory(category)
+      getCategoriesNames()
+      getCategory(category)
     }, [category])
 
     return(
        <> 
         <div id='produtos-container'>
-          
-          <section id="menu-container">
-          <h3>Categorias: </h3>
+          <div id="menu-container">
+            <h3>Categorias: </h3>
             <ul>
-              <Link to={'/products'}><li> Todos </li></Link>
-
+            <Link to={'/products'}><li> Todos </li></Link>
              {categoriesNames.length !== 0 && (
                categoriesNames.map( ({id, name,longName}) => {
                   return(
-                    <Link to={`/products/categories/${name}`}> 
-                    <li key={id} > {longName}   </li>
-                    </Link> 
+                    <Link to={`/products/categories/${name}`}><li key={id}> {longName} </li></Link>
                   )
                })
              )}          
-            </ul>               
-          </section>  
+            </ul>        
+          </div>  
         
-          <section id="list-container">
-          {products.map(
+        
+        <section>
+          {categories.map(
               ({ id, title, image }) => {
                   return (
                     <article key={id}>

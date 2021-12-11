@@ -15,9 +15,10 @@ const CartContextProvider = ({ children }) => {
 
   const addProduct = (product) => dispatch({ type: 'ADD_PRODUCT', payload: product });
   const deleteProduct = (product) => dispatch({ type: 'DELETE_PRODUCT', payload: product });
+  const reloadProduct = (product) => dispatch({ type: 'REFRESH_PRODUCT', payload: product})
 
   return (
-    <CartContext.Provider value={{ products, addProduct, deleteProduct }}>
+    <CartContext.Provider value={{ products, addProduct, deleteProduct, reloadProduct }}>
       {children}
     </CartContext.Provider>
   )

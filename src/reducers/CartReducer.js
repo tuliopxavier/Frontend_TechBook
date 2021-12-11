@@ -14,6 +14,9 @@ export const cartReducer = (state, action) => {
       return state.filter(product => (
         product.id !== action.payload.id));
 
+    case 'REFRESH_PRODUCT':
+      return [...state];
+
     default:
       return state;
   }

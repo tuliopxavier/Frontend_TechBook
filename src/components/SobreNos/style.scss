@@ -7,6 +7,7 @@ div#main{
     }
     section{
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap:2rem;
@@ -20,6 +21,14 @@ div#main{
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                #img-photo {
+                    width: 6rem;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    margin: 0.5rem;
+                    filter: drop-shadow(0 5px 5px rgba(90, 65, 65, 0.5));
+                }
         
                 div.icones{
                     display: flex;
@@ -31,6 +40,12 @@ div#main{
             }
         }
     }
+}
+
+@media (max-width: 768px) {
+    #section-profile {
+        flex-direction: column;
+    }    
 }
 
 

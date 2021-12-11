@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { CarrinhoItem } from '../CarrinhoItem';
 import { CartContext } from '../../contexts/cartContext';
+import { Helmet } from 'react-helmet';
 import './style.scss';
 
 export const Carrinho = () => {
@@ -34,26 +35,31 @@ export const Carrinho = () => {
   };
 
   return (
-    <div id='carrinho-container'>
-      <section>
-        {productsList.length ? (
-          productsList.map((item) => {
-            return <CarrinhoItem key={item.id} product={item} />;
-          })
-        ) : (
-          <p id='loading'>Carrinho vazio...</p>
-        )}
+    <>
+      <Helmet>
+        <title>Techbook | Carrinho</title>
+      </Helmet>
+      <div id='carrinho-container'>
+        <section>
+          {productsList.length ? (
+            productsList.map((item) => {
+              return <CarrinhoItem key={item.id} product={item} />;
+            })
+          ) : (
+            <p id='loading'>Carrinho vazio...</p>
+          )}
 
-        <div id='total-cart'>
-          <h1>
-            <small>R$</small>
-            {total.toFixed(2)}
-          </h1>
-          <button type='button' onClick={handleClick}>
-            Finalizar
-          </button>
-        </div>
-      </section>
-    </div>
+          <div id='total-cart'>
+            <h1>
+              <small>R$</small>
+              {total.toFixed(2)}
+            </h1>
+            <button type='button' onClick={handleClick}>
+              Finalizar
+            </button>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
